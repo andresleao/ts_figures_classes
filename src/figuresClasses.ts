@@ -10,13 +10,14 @@ export interface Figure {
 }
 
 export class Triangle implements Figure {
-  color: string;
-  shape: Shape;
-  a: number;
-  b: number;
-  c: number;
+  shape: Shape = 'triangle';
 
-  constructor(color: string, a: number, b: number, c: number) {
+  constructor(
+    public color: string,
+    public a: number,
+    public b: number,
+    public c: number,
+  ) {
     if (a <= 0 || b <= 0 || c <= 0) {
       throw new Error('All sides should be positive numbers');
     }
@@ -24,12 +25,6 @@ export class Triangle implements Figure {
     if (!(a + b > c && a + c > b && b + c > a)) {
       throw new Error(`sides ${a}, ${b} and ${c} can't form a triangle`);
     }
-
-    this.color = color;
-    this.shape = 'triangle';
-    this.a = a;
-    this.b = b;
-    this.c = c;
   }
 
   getArea(): number {
@@ -46,18 +41,15 @@ export class Triangle implements Figure {
 }
 
 export class Circle implements Figure {
-  color: string;
-  shape: Shape;
-  radius: number;
+  shape: Shape = 'circle';
 
-  constructor(color: string, radius: number) {
+  constructor(
+    public color: string,
+    public radius: number,
+  ) {
     if (radius <= 0) {
       throw new Error('Radius should be positive number');
     }
-
-    this.shape = 'circle';
-    this.color = color;
-    this.radius = radius;
   }
 
   getArea(): number {
@@ -72,20 +64,16 @@ export class Circle implements Figure {
 }
 
 export class Rectangle implements Figure {
-  color: string;
-  shape: Shape;
-  width: number;
-  height: number;
+  shape: Shape = 'rectangle';
 
-  constructor(color: string, width: number, height: number) {
+  constructor(
+    public color: string,
+    public width: number,
+    public height: number,
+  ) {
     if (width <= 0 || height <= 0) {
       throw new Error('All sides should be positive numbers');
     }
-
-    this.shape = 'rectangle';
-    this.color = color;
-    this.width = width;
-    this.height = height;
   }
 
   getArea(): number {
